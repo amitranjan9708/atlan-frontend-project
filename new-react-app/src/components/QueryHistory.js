@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, List, ListItem, ListItemText, Modal, Paper, Typography } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid,GridToolbar } from "@mui/x-data-grid";
 
 const QueryHistory = ({ history }) => {
   const [open, setOpen] = useState(false);
@@ -27,13 +27,13 @@ const QueryHistory = ({ history }) => {
 
       {/* Modal for showing query results */}
       <Modal open={open} onClose={() => setOpen(false)}>
-        <Paper sx={{height:500, width: "60%", margin: "auto", marginTop: 5, padding: 3 }}>
+        <Paper sx={{height:400, width: "60%", margin: "auto", marginTop: 5, padding: 3 }}>
           <Typography variant="h6">Query Results:</Typography>
           <DataGrid
             rows={selectedResult || []}
             columns={
               selectedResult.length > 0
-                ? Object.keys(selectedResult[0]).map((key) => ({ field: key, headerName: key, flex: 1 ,minWidth:150,maxHeight:500}))
+                ? Object.keys(selectedResult[0]).map((key) => ({ field: key, headerName: key, flex: 1 ,minWidth:150}))
                 : []
             }
             pageSize={5}
@@ -41,6 +41,8 @@ const QueryHistory = ({ history }) => {
             getRowId={(row) => row.id || Math.random()}
             disableColumnResize={false} // Allows resizing of columns
             disableSelectionOnClick
+            slots={{ toolbar: GridToolbar }} // ✅ Corrected for MUI v6+
+            
           />
           <Button fullWidth variant="contained" color="error" onClick={() => setOpen(false)} sx={{ marginTop: 2 }}>
             Close

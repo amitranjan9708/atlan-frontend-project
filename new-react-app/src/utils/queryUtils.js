@@ -33,9 +33,9 @@ export const loadCSVData = async (filePath) => {
 
 // Function to dynamically load table data from CSV files
 export const loadTableData = async () => {
-  const users = await loadCSVData("employees.csv");
-  const orders = await loadCSVData("employees.csv");
-  const products = await loadCSVData("employees.csv");
+  const users = await loadCSVData("customers.csv");
+  const orders = await loadCSVData("orders.csv");
+  const products = await loadCSVData("products.csv");
 
   return {
     users,
