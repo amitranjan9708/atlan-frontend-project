@@ -25,7 +25,7 @@ const QueryHistory = ({ history }) => {
         ))}
       </List>
 
-      {/* Modal for showing query results */}
+ 
       <Modal open={open} onClose={() => setOpen(false)}>
         <Paper sx={{height:400, width: "60%", margin: "auto", marginTop: 5, padding: 3 }}>
           <Typography variant="h6">Query Results:</Typography>
@@ -39,9 +39,10 @@ const QueryHistory = ({ history }) => {
             pageSize={5}
             autoPageSize
             getRowId={(row) => row.id || Math.random()}
-            disableColumnResize={false} // Allows resizing of columns
+            disableColumnResize={false} 
             disableSelectionOnClick
-            slots={{ toolbar: GridToolbar }} // ✅ Corrected for MUI v6+
+            slots={{ toolbar: GridToolbar }}
+            experimentalFeatures={{ lazyLoading: true }} 
             
           />
           <Button fullWidth variant="contained" color="error" onClick={() => setOpen(false)} sx={{ marginTop: 2 }}>

@@ -1,6 +1,12 @@
 import React from "react";
 import { Box, Button, MenuItem, TextField } from "@mui/material";
 import { queries } from "../utils/queryUtils";
+import Input from '@mui/material/Input';
+
+
+const handleAlert =()=>{
+  alert('Files Uploaded');
+}
 
 const QuerySelector = ({ selectedQuery, setSelectedQuery, executeQuery }) => {
   return (
@@ -22,6 +28,11 @@ const QuerySelector = ({ selectedQuery, setSelectedQuery, executeQuery }) => {
       <Button variant="contained" color="primary" onClick={executeQuery}>
         Run Query
       </Button>
+      
+      <Input type="file"  multiple/>
+        <Button onClick={()=>handleAlert()}>
+          Upload
+        </Button>
     </Box>
   );
 };
