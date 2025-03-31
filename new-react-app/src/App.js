@@ -56,7 +56,7 @@ const App = () => {
 
       <QueryResults queryResult={queryResult} />
 
-      <QueryHistory history={history} />
+      <QueryHistory history={history} setHistory={setHistory} />
     </Container>
   );
 };

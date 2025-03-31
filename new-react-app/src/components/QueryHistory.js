@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, List, ListItem, ListItemText, Modal, Paper, Typography } from "@mui/material";
 import { DataGrid,GridToolbar } from "@mui/x-data-grid";
 
-const QueryHistory = ({ history }) => {
+const QueryHistory = ({ history, setHistory }) => {
   const [open, setOpen] = useState(false);
   const [selectedResult, setSelectedResult] = useState([]);
 
@@ -11,9 +11,16 @@ const QueryHistory = ({ history }) => {
     setOpen(true);
   };
 
+  const handleClearHistory = () => {
+    setHistory([]);
+  };
+
   return (
     <Box sx={{ marginTop: 4 }}>
       <Typography variant="h6">Query History:</Typography>
+      <Button variant="contained" color="error" onClick={handleClearHistory} sx={{ marginBottom: 2 }}>
+        Clear History
+      </Button>
       <List>
         {history.map((entry, index) => (
           <ListItem key={index} sx={{ display: "flex", justifyContent: "space-between" }}>
